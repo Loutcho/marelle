@@ -97,7 +97,6 @@ int main(int argc, char *argv[])
 		yy1 = 0;
 		yy2 = HEIGHT;
 		line(xx1, yy1, xx2, yy2, "rgb(128,0,0)");
-		label_horizontal(xx2, yy2 - 2 * MARGIN, m, "rgb(168,40,40)");
 	}
 
 	for (n = 1; n <= N; n ++)
@@ -107,19 +106,36 @@ int main(int argc, char *argv[])
 		xx1 = 0;
 		xx2 = WIDTH;
 		line(xx1, yy1, xx2, yy2, "rgb(32,32,160)");
-		label_vertical(xx1 + 2 * MARGIN, yy1, n, "rgb(72,72,200)");
+	}
+
+	for (m = 1; m <= M; m ++)
+	{
+		convert(log(m), 0.0, &xx1, &yy1);
+		xx2 = xx1;
+		yy1 = 0;
+		yy2 = HEIGHT;
+		label_horizontal(xx2, yy2 - 2 * MARGIN, m, "rgb(255,127,127)");
+	}
+
+	for (n = 1; n <= N; n ++)
+	{
+		convert(0.0, log(n), &xx1, &yy1);
+		yy2 = yy1;
+		xx1 = 0;
+		xx2 = WIDTH;
+		label_vertical(xx1 + 2 * MARGIN, yy1, n, "rgb(127,127,255)");
 	}
 
         for (m = 2; m <= M; m ++)
         {
                 for (n = 2; n <= N; n ++)
                 {
-			if (m != n)
+	/*		if (m != n) */
 			{
 				x = log(m);
 				y = log(n);
 				convert(x, y, &xx, &yy);
-				label(xx, yy, m * n, "rgb(128,128,128)");
+				label(xx, yy, m * n, "rgb(255,255,255)");
 			}
                 }
         }
